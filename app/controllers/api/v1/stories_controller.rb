@@ -4,9 +4,7 @@ class Api::V1::StoriesController < Api::BaseController
   skip_before_action :authenticate_user_from_token, only: :show
 
   def show
-    if story.present?
-      show_respone
-    end
+    show_respone if story.present?
   end
 
   def create

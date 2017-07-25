@@ -4,9 +4,7 @@ class Api::V1::StepsController < Api::BaseController
   skip_before_action :authenticate_user_from_token, only: :show
 
   def show
-    if step.present?
-      step_showed
-    end
+    step_showed if step.present?
   end
 
   def create
