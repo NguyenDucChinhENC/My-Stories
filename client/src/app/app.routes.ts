@@ -24,7 +24,7 @@ export const routing: Routes = [
       { path: ':id', component: CategoryDetailsComponent }
     ]
   },
-  { path: 'user/edit', component: UpdateUserComponent,
+  { path: 'user', component: InfoUserComponent,
     canActivate: [LoggedInGuard],
   },
   {

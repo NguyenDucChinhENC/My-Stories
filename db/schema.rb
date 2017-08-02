@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170731155508) do
   create_table "steps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "content"
-    t.float "completed_rate", limit: 24
+    t.integer "completed_rate"
     t.integer "total_vote"
     t.integer "story_id"
     t.datetime "created_at", null: false
@@ -70,10 +70,8 @@ ActiveRecord::Schema.define(version: 20170731155508) do
     t.boolean "is_public"
     t.datetime "due_date"
     t.integer "user_id"
-    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_stories_on_category_id"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
@@ -112,7 +110,6 @@ ActiveRecord::Schema.define(version: 20170731155508) do
     t.string "voteable_type"
     t.integer "voteable_id"
     t.integer "user_id"
-    t.integer "value", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_votes_on_user_id"
