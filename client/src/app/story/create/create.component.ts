@@ -16,6 +16,7 @@ export class CreateComponent implements OnInit {
   url_image_story = 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png';
   private current_user: any;
   StoryForm: FormGroup;
+  PackageStoryForm: FormGroup;
   StepForm: FormArray;
   hidden = true;
   sub_temp: number;
@@ -40,13 +41,15 @@ export class CreateComponent implements OnInit {
   }
 
   createForm() {
-    this.StoryForm = this.formbuilder.group({
-      name: ['', Validators.required],
-      due_date: ['', Validators.required],
-      is_public: 'true',
-      description: ['', Validators.required],
-      image: '',
-      step: this.formbuilder.array([])
+    this.PackageStoryForm = this.formbuilder.group({
+      story: this.StoryForm = this.formbuilder.group({
+        name: ['', Validators.required],
+        due_date: ['', Validators.required],
+        is_public: 'true',
+        description: ['', Validators.required],
+        image: '',
+        step: this.formbuilder.array([])
+      })
     });
     this.StepForm = <FormArray>this.StoryForm.controls['step'];
   }
@@ -144,8 +147,9 @@ export class CreateComponent implements OnInit {
   }
 
   form_is_invalid(): boolean {
-    if (!this.StoryForm.dirty && !this.StoryForm.valid) {
-      return this.StoryForm.value.image === '';
+    if (this.StoryForm.dirty && this.StoryForm.valid) {
+      // return this.StoryForm.value.image === '';
+      return false;
     }
     return true;
   }
@@ -157,7 +161,7 @@ export class CreateComponent implements OnInit {
       });
       return;
     } else {
-      this.createService.createStory(this.StoryForm.value,
+      this.createService.createStory(this.PackageStoryForm.value,
         this.current_user.token).subscribe(response => this.onSuccess(response),
         response => this.onError(response));
     }

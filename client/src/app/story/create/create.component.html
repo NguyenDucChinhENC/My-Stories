@@ -1,4 +1,5 @@
-<div class="p-container">
+
+<md-card class="p-container">
   <a href="" (click)="$event.preventDefault(); back()"
     class="btn-slide btn-left" *ngIf="presentStep >= 0">
     <i class="material-icons">keyboard_arrow_left</i>
@@ -7,6 +8,7 @@
     *ngIf="presentStep + 1 < StepForm.length && !hidden">
     <i class="material-icons">keyboard_arrow_right</i>
   </a>
+
 
   <form [formGroup]="StoryForm">
     <div class="container" id="story">
@@ -133,4 +135,4 @@
       </div>
     </div>
   </form>
-</div>
+</md-card>
