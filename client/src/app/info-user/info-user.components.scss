@@ -24,12 +24,20 @@ h1.logo {
 }
 
 .dp {
+<<<<<<< HEAD
   border: 10px solid $greyc;
+=======
+  border: 10px solid #eee;
+>>>>>>> login  v getapiUse Ui
   transition: all 0.2s ease-in-out;
 }
 
 .dp:hover {
+<<<<<<< HEAD
   border: 2px solid $greyc;
+=======
+  border: 2px solid #eee;
+>>>>>>> login  v getapiUse Ui
   transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
@@ -50,7 +58,11 @@ h1.logo {
 }
 .image {
   width: 200px;
+<<<<<<< HEAD
   height: 200px;
+=======
+  height:200px;
+>>>>>>> login  v getapiUse Ui
 }
 .cover-img {
   padding-left: 70px;
