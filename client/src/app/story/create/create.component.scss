@@ -57,7 +57,6 @@ body {
   max-width: 800px;
   min-width: 324px;
   background-color: $white;
-  border-bottom: 3px solid $grey;
 }
 .row {
   width: 100%;
@@ -157,6 +156,12 @@ body {
     height: 60px;
     opacity: 0;
   }
+}
+
+.text-center-c {
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
 }
 
 .infor-detail {
@@ -328,4 +333,16 @@ form {
 
 .ip {
   width: 23pc;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.ip-category {
+  width: 23pc;
+  padding-top: 47px;
+  padding-bottom: 20px;
+}
+
+.ipc {
+  width: 17pc;
 }
