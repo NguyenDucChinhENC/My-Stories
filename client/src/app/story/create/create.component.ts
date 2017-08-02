@@ -20,19 +20,29 @@ export class CreateComponent implements OnInit {
   StepForm: FormArray;
   hidden = true;
   sub_temp: number;
+  categories:  any[];
+
   private presentStep = -1;
   constructor(private formbuilder: FormBuilder, private router: Router,
     private createService: CreateStoryService,
-    private snackBar: MdSnackBar, private translate: TranslateService) {
+    private snackBar: MdSnackBar, private translate: TranslateService,
+    public createStoryService: CreateStoryService) {
   }
 
   ngOnInit() {
     this.current_user = JSON.parse(localStorage.getItem('currentUser'));
     this.createForm();
+    this.createStoryService.getCategory().
+    subscribe(response => this.onSuccessCategory(response));
     $('#story').addClass('animated fadeInLeft');
     setInterval(function() {
       $('#story').removeClass('animated fadeInLeft');
     }, 1500);
+  }
+
+  onSuccessCategory(response) {
+    this.categories = response.data.categories;
+    console.log(this.categories);
   }
 
   getStepForm(i: number): FormArray {
@@ -46,6 +56,7 @@ export class CreateComponent implements OnInit {
         name: ['', Validators.required],
         due_date: ['', Validators.required],
         is_public: 'true',
+        category_id: ['', Validators.required],
         description: ['', Validators.required],
         image: '',
         step: this.formbuilder.array([])

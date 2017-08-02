@@ -17,7 +17,9 @@ import { MdDialogModule,
   MdInputModule,
   MdTooltipModule,
   MdMenuModule,
-  MdSelectModule
+  MdSelectModule,
+  MdDatepickerModule,
+  MdNativeDateModule
 } from '@angular/material';
 import { LoggedInGuard } from './logged-in.guard';
 import 'hammerjs';
@@ -97,7 +99,9 @@ import {
     MdChipsModule,
     MdGridListModule,
     MdMenuModule,
-    MdSelectModule
+    MdSelectModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   entryComponents: [
     LoginComponent,
@@ -106,13 +110,13 @@ import {
     UpdateUserNameComponent,
     UpdateUserPasswordComponent,
     EditUserDialogComponent,
-    SubStepComponent
+    SubStepComponent,
   ],
   providers: [
     LoggedInGuard,
     StoryService,
     StoriesListResolverService,
-    VoteService
+    VoteService,
   ],
   bootstrap: [AppComponent]
 })

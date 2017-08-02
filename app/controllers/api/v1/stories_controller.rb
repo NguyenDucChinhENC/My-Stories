@@ -26,7 +26,7 @@ class Api::V1::StoriesController < Api::BaseController
 
     if story.save
       save_each_step if params_steps.present?
-      created_response_success
+      action_successfully
     else
       action_fail
     end

@@ -1,5 +1,5 @@
 class Story < ApplicationRecord
-  ATTRIBUTES_PARAMS = %i(name description is_public due_date).freeze
+  ATTRIBUTES_PARAMS = %i(name description is_public due_date category_id).freeze
 
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable, dependent: :destroy
