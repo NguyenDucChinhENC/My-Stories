@@ -16,7 +16,8 @@ import { MdDialogModule,
   MdCardModule,
   MdInputModule,
   MdTooltipModule,
-  MdMenuModule
+  MdMenuModule,
+  MdSelectModule
 } from '@angular/material';
 import { LoggedInGuard } from './logged-in.guard';
 import 'hammerjs';
@@ -95,7 +96,8 @@ import {
     MdToolbarModule,
     MdChipsModule,
     MdGridListModule,
-    MdMenuModule
+    MdMenuModule,
+    MdSelectModule
   ],
   entryComponents: [
     LoginComponent,
