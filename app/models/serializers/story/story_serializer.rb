@@ -1,7 +1,7 @@
 module Serializers
   module Story
     class StorySerializer < Serializers::SupportSerializer
-      attrs :id, :name, :description, :total_vote, :is_public
+      attrs :id, :name, :description, :total_vote, :is_public, :category_id
       attrs :due_date, :user_id, :created_at, :updated_at, :picture
       attrs :steps, :comments, :users_voted
 
@@ -12,9 +12,14 @@ module Serializers
           .new(object: object.steps).serializer
       end
 
-      def comments
-        Serializers::Comment::CommentSerializer
-          .new(object: object.comments).serializer
+      # def comments
+      #   Serializers::Comment::CommentSerializer
+      #     .new(object: object.comments).serializer
+      # end
+
+      def total_vote
+        Serializers::Vote::VotesSerializer
+        .new(object: object.votes).serializer.count
       end
 
       # def users_voted

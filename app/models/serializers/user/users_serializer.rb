@@ -2,14 +2,16 @@ module Serializers
   module User
     class UsersSerializer < Serializers::SupportSerializer
       attrs :id, :email, :name, :avatar
-      attrs :stories
+      attrs :stories, :stories_hot, :categories
 
       delegate :id, to: :object
+      delegate :stories, to: :objects
 
       def stories
         Serializers::Story::StorySerializer
-        .new(object: object.stories).serializer
+        .new(object: object.stories.newest).serializer
       end
+
     end
   end
 end

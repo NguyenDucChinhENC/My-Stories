@@ -5,6 +5,7 @@ import { StoryDetailsComponent } from './story/story-details/story-details.compo
 import { StoriesListResolverService } from './story/shared/stories-list-resolver.service';
 import { CreateComponent } from './story/create/create.component';
 import { LoggedInGuard } from './logged-in.guard';
+import { NotLoggedInGuard } from './notLogged-in.guard';
 import { UpdateUserComponent } from './updateuser/updateuser.component';
 import { InfoUserComponent } from './info-user/info-user.component';
 import { HomeComponent } from './home/home.component';
@@ -27,8 +28,11 @@ export const routing: Routes = [
   { path: 'user', component: InfoUserComponent,
     canActivate: [LoggedInGuard],
   },
+  { path: '', component: InfoUserComponent,
+    canActivate: [NotLoggedInGuard],
+  },
   {
-    path: '', component: HomeComponent
+    path: 'signin', component: HomeComponent
   }
 ];
 export const AppRoutes  = RouterModule.forRoot(routing);

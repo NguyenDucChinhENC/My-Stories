@@ -172,6 +172,7 @@ export class CreateComponent implements OnInit {
       });
       return;
     } else {
+    console.log(this.PackageStoryForm.value);
       this.createService.createStory(this.PackageStoryForm.value,
         this.current_user.token).subscribe(response => this.onSuccess(response),
         response => this.onError(response));

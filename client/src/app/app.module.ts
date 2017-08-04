@@ -19,9 +19,11 @@ import { MdDialogModule,
   MdMenuModule,
   MdSelectModule,
   MdDatepickerModule,
-  MdNativeDateModule
+  MdNativeDateModule,
+  MdTabsModule
 } from '@angular/material';
 import { LoggedInGuard } from './logged-in.guard';
+import { NotLoggedInGuard } from './notLogged-in.guard';
 import 'hammerjs';
 import { UpdateUserComponent } from './updateuser/updateuser.component';
 import { UpdateUserNameComponent } from './updateuser/update-user-name/update-user-name.component'
@@ -101,7 +103,8 @@ import {
     MdMenuModule,
     MdSelectModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    MdTabsModule
   ],
   entryComponents: [
     LoginComponent,
@@ -114,6 +117,7 @@ import {
   ],
   providers: [
     LoggedInGuard,
+    NotLoggedInGuard,
     StoryService,
     StoriesListResolverService,
     VoteService,

@@ -35,5 +35,6 @@ export class InfoUserComponent implements OnInit {
     this.user_name = user.name;
     this.user_email = user.email;
     this.stories = user.stories;
+    console.log(this.stories);
   }
 }

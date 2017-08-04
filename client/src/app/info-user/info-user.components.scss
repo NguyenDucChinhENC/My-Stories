@@ -66,11 +66,23 @@ h1.logo {
   padding-top: 270px;
 }
 
-.example-card {
+.ecard {
   width: 800px;
+}
+
+.ucard {
+  width: 850px;
+}
+
+.scard {
+  padding-bottom: 40px;
 }
 
 .example-header-image {
   background-image: url('https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-9/20525985_2049242321974421_6915108520002122142_n.jpg?oh=41bfa9c4feedc92a2341fdaf3f622c7b&oe=59F5C5BB');
   background-size: cover;
+}
+
+.name-story {
+  font-weight: bold;
 }

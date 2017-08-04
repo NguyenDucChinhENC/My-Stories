@@ -18,6 +18,7 @@ class Story < ApplicationRecord
   end
 
   scope :select_by_category_id, lambda_params_category_id
+  scope :newest, -> {order created_at: :desc}
 
   validates :name, presence: true
   validates :description, presence: true

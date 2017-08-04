@@ -11,10 +11,10 @@ module Serializers
           .new(object: object.sub_steps).serializer
       end
 
-      def comments
-        Serializers::Comment::CommentSerializer
-          .new(object: object.comments).serializer
-      end
+      # def comments
+      #   Serializers::Comment::CommentSerializer
+      #     .new(object: object.comments).serializer
+      # end
 
       # def users_voted
       #   User.find_users_votes object.id, object.class
