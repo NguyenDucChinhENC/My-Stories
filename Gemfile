@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem "rails", "~> 5.1.2"
-gem "mysql2", ">= 0.3.18", "< 0.5"
 gem "puma", "~> 3.7"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
@@ -23,6 +22,14 @@ gem "carrierwave-base64"
 gem "cloudinary"
 gem "elasticsearch-model"
 gem "elasticsearch-rails"
+
+group :development do
+  gem "mysql2", ">= 0.3.18", "< 0.5"
+end
+
+group :production do
+  gem "pg"
+end
 
 group :development, :test do
   gem "pry"

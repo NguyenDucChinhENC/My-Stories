@@ -4,6 +4,7 @@ $deeppink: #ff1493;
 $green: #33a444;
 $green1:rgba(0, 109, 0, .8);
 $gray: rgba(0, 0, 0, .075);
+@import url('https://fonts.googleapis.com/css?family=Oswald:600&subset=vietnamese');
 
 .custom-nav {
   -webkit-box-shadow: 0 1px 2px 0 $barc;
@@ -11,6 +12,25 @@ $gray: rgba(0, 0, 0, .075);
   box-shadow: 0 1px 2px 0 $barc;
   border-radius: 0;
   background-color: $whitec;
+}
+
+.nav {
+  font-size: 13px;
+  height: 60px;
+}
+
+.cent-bar {
+  padding: 5px;
+}
+
+.logo {
+  height: 100%;
+}
+
+.logo img {
+  height: 70%;
+  width: 70%;
+  padding: 13px;
 }
 
 .navbar-brand {
@@ -70,5 +90,56 @@ ng-template.right {
 }
 
 .search-bar {
-  padding-top: 7px;
+  padding-top: 13px;
+}
+
+.search-form .form-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 100%;
+  border-radius: 25px 25px 25px 25px;
+}
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #616161;
+  left: initial;
+  font-size: 14px;
 }
