@@ -5,5 +5,6 @@ export class User {
     public email: string,
     public avatar: string,
     public stories: any[],
+    public following: any[],
   ) { }
 }

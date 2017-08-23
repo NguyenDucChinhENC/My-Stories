@@ -9,19 +9,24 @@ import { TranslateService } from 'ng2-translate';
 import { MdSnackBar, MdDialog } from '@angular/material';
 import { EditStoryComponent } from './edit/edit.component';
 import { StoryService } from '../shared/story.service';
+import { FollowService } from '../shared/follow-story.server';
 import { Response } from '@angular/http';
-import { URL } from '../../app.routes';
 
 @Component({
   templateUrl: './story-details.component.html',
   styleUrls: ['./story-details.component.scss'],
-  providers: [StoryResolverService, VoteService, StoryService, MdSnackBar]
+  providers: [StoryResolverService, VoteService, StoryService, FollowService, MdSnackBar]
 })
 
 export class StoryDetailsComponent implements OnInit {
+
+  testObj: any = {};
+
   story: IStory;
   image_url = IMG_URL;
   current_user: any;
+  status_follow: any;
+  public follow_title: String;
   commentMapping:
     {[k: string]: string} = {'=1': '# ' + this.translate.instant('single_story.comment'),
     'other': '# ' + this.translate.instant('single_story.comments')};
@@ -31,13 +36,31 @@ export class StoryDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private voteService: VoteService,
     private translate: TranslateService, private dialog: MdDialog, private _router: Router,
-    private storyservice: StoryService, private snackBar: MdSnackBar) {
+    private storyservice: StoryService, private followService: FollowService, private snackBar: MdSnackBar) {
   }
 
   ngOnInit() {
     this.story = this.route.snapshot.data['story'];
+    this.getFollowStory(this.story.id);
     this.current_user = JSON.parse(localStorage.getItem('currentUser'));
     this.checkVoted();
+  }
+
+  getFollowStory(id :number){
+    this.storyservice.getFollow(id, JSON.parse(localStorage.getItem('currentUser')).token)
+      .subscribe(response => this.onSuccessgGetFollow(response));
+  }
+  onSuccessgGetFollow(response){
+    this.status_follow = response;
+    this.setTitleFollow(this.status_follow);
+  }
+
+  setTitleFollow(temp: any) {
+    if (temp === false){
+      this.follow_title = 'Follow'
+    } else {
+      this.follow_title = 'Unfollow'
+    }
   }
 
   checkImageExist() {
@@ -137,7 +160,33 @@ export class StoryDetailsComponent implements OnInit {
   )
   }
 
-  openClone(){
-    this._router.navigate(['/']);
+  onButtomFollow(id: any) {
+    console.log(this.status_follow)
+    if (this.status_follow === false){
+      this.followStory(id);
+    } else {
+      this.unfollowstory(id);
+    }
+  }
+
+  followStory(id: number){
+    this.current_user = JSON.parse(localStorage.getItem('currentUser'));
+    this.followService.createFollow(id, this.current_user.token).subscribe(response => this.followPath(response));
+  }
+
+  followPath(response){
+    console.log('hihi');
+    this.follow_title = 'Unfollow';
+    this.getFollowStory(this.story.id);
+  }
+
+  unfollowstory(id: number){
+    this.current_user = JSON.parse(localStorage.getItem('currentUser'));
+    this.followService.destroyFollow(this.status_follow, id, this.current_user.token).subscribe(response => this.unFollowPath(response));
+  }
+
+  unFollowPath(response){
+    this.follow_title = 'Follow';
+    this.getFollowStory(this.story.id);
   }
 }

@@ -11,7 +11,7 @@
     <button md-menu-item (click)="edit()">
       <md-icon>Edit this Post</md-icon>
     </button>
-    
+
     <button md-menu-item (click)="delete()">
       <md-icon>Delete this Post</md-icon>
     </button>
@@ -51,6 +51,8 @@
         </button>
         <button md-button class="col-md-3 font" (click)="onCloneButtom(story.id)">
           <i class="material-icons">library_add</i> {{'clone' | translate}}
+        <button md-button class="col-md-2 font" id="heart" (click)="onButtomFollow(story.id)">
+          <i class="material-icons">visibility</i> {{follow_title}}
         </button>
         <div class="col-md-3"></div>
         <a md-button class="col-md-4 font">

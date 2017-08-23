@@ -43,9 +43,11 @@
                 </md-menu>
               </div>
               <ng-template #follow>
-                <div class="col-md-6 col-md-offset-3">
-                  <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
-                </div>
+                  <div class="col-md-6 col-md-offset-3">
+                    <button class="btn btn-success btn-block" (click)="onFollowButtom(user_id)">
+                      <span class="fa fa-plus-circle"></span>{{user_followed_status}}
+                    </button>
+                  </div>
               </ng-template>
             </div>
             <hr>
@@ -68,6 +70,15 @@
           <div class="card">
             <div class="header">
               <h4 class="title">{{'user.following' | translate}}</h4>
+              <div class="row">
+                <ul class="list-group">
+                  <div *ngFor="let user of following | slice:0:10">
+                    <a href="#" class="list-group-item" [routerLink]="['/user', user.id]">
+                      {{user.name}}
+                    </a>
+                  </div>
+                </ul>
+              </div>
             </div>
             <div class="content">
               <ul class="list-unstyled team-members">

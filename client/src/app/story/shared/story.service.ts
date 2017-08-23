@@ -33,6 +33,12 @@ export class StoryService {
     });
   }
 
+  getFollow(id: number, token: string): Observable<any> {
+    const headers: any = {'MS-AUTH-TOKEN': token };
+    const options = new RequestOptions({headers: headers});
+      return this.http.get(URL + 'api/stories/' + id, options).map(response => response.json().data.followed);
+  }
+
   deleteStory(id: number, token: string): Observable<any> {
     const apiurl = URL + 'api/stories/' + id;
     const headers: any = {'MS-AUTH-TOKEN': token };

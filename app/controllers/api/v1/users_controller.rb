@@ -1,6 +1,7 @@
 class Api::V1::UsersController < Api::BaseController
   before_action :find_object, only: %i(show update destroy).freeze
   skip_before_action :authenticate_user_from_token, only: %i(index show)
+
   def index
     @users = User.all
     render json: {

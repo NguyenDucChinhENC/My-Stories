@@ -18,6 +18,11 @@
                 {{story.total_vote}}
               </button>
             </div>
+            <div class="story-thumbnail-votes">
+              <button md-button>
+                <p *ngIf="story.followed, else unfollowed">followed</p>
+              </button>
+            </div>
           </div>
         </div>
       </div>

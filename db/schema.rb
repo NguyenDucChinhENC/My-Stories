@@ -73,9 +73,8 @@ ActiveRecord::Schema.define(version: 20170822075710) do
     t.string "name"
     t.text "content"
     t.float "completed_rate", limit: 24
-    t.integer "total_vote", default: 0
+    t.integer "total_vote"
     t.integer "story_id"
-    t.datetime "due_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["story_id"], name: "index_steps_on_story_id"
@@ -84,12 +83,12 @@ ActiveRecord::Schema.define(version: 20170822075710) do
   create_table "stories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "description"
-    t.integer "total_vote", default: 0
-    t.boolean "is_public", default: false
+    t.integer "total_vote"
+    t.integer "number_of_steps"
+    t.boolean "is_public"
     t.datetime "due_date"
     t.integer "user_id"
     t.integer "category_id"
-    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_stories_on_category_id"
@@ -101,7 +100,6 @@ ActiveRecord::Schema.define(version: 20170822075710) do
     t.text "content"
     t.boolean "is_completed", default: false
     t.integer "step_id"
-    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["step_id"], name: "index_sub_steps_on_step_id"
